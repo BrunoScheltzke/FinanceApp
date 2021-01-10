@@ -24,9 +24,6 @@ struct ChartInfo: Decodable {
 struct ChartMetadata: Decodable {
     let currency: String
     let symbol: String
-    let regularMarketPrice: Double
-    let chartPreviousClose: Double
-    let previousClose: Double
 }
 
 struct Indicator: Decodable {

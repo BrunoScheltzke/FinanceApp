@@ -22,7 +22,7 @@ struct ChartViewModel {
     }
     
     func getItens() {
-        provider.getFinanceData { result in
+        provider.getFinanceData(symbol: "HYDR.ME", dateInterval: .oneMonth) { result in
             switch result {
             case .success(let entries):
                 self.delegate?.didGet(entries)

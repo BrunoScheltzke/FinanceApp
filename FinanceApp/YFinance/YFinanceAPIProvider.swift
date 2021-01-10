@@ -16,20 +16,49 @@ struct DefaultResponse: Codable {
     let msg: String
 }
 
+enum DateInterval {
+    
+    case oneDay
+    case oneWeek
+    case oneMonth
+    
+    func getDisplayableDate(from timeInterval: TimeInterval) -> Double {
+        let date = Date(timeIntervalSince1970: timeInterval)
+        let calendar = Calendar.current
+        return Double(calendar.component(.hour, from: date)).rounded(toPlaces: 2)
+        
+        switch self {
+        case .oneDay: return Double(calendar.component(.hour, from: date)).rounded(toPlaces: 2)
+        case .oneWeek: return Double(calendar.component(.day, from: date)).rounded(toPlaces: 2)
+        case .oneMonth: return Double(calendar.component(.day, from: date)).rounded(toPlaces: 2)
+        }
+    }
+    
+}
+
 protocol FinanceProvidable {
-    func getFinanceData(completion: @escaping(Result<[ChartEntry], Error>) -> Void)
+    func getFinanceData(symbol: String, dateInterval: DateInterval, completion: @escaping(Result<[ChartEntry], Error>) -> Void)
 }
 
 class YFinanceAPIProvider: FinanceProvidable {
     
     lazy var loginPath = "\(basePath)cadastros/login"
     
-    func getFinanceData(completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
+    func getDateParam(from dateInterval: DateInterval) -> String {
+        switch dateInterval {
+        case .oneDay: return "1d&range=1d"
+        case .oneWeek: return "1w&range=5d"
+        case .oneMonth: return "1mo&range=5d"
+        }
+    }
+    
+    func getFinanceData(symbol: String, dateInterval: DateInterval,
+                        completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
         let headers = [
             "x-rapidapi-key": "955068e6ccmsh7b50ca4ee486385p1ab17djsn8ee566d54b9b",
             "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
         ]
-        AF.request("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=HYDR.ME&interval=5m&range=1d",
+        AF.request("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=\(symbol)&interval=5m&range=1d)",
                    method: .get,
                    headers: HTTPHeaders(headers))
             .validate()
@@ -42,10 +71,15 @@ class YFinanceAPIProvider: FinanceProvidable {
                         completion(.failure(CustomError.invalidData))
                         return
                     }
+                    timestamps.forEach { timesta in
+                        print(Date(timeIntervalSince1970: timesta))
+                    }
                     var entries = [ChartEntry]()
                     for (index, point) in points.enumerated() {
                         if let point = point {
-                            entries.append(ChartEntry(price: point, dateIndicator: timestamps[index]))
+                            let roundedPoint = point.rounded(toPlaces: 3)
+                            let timestamp = dateInterval.getDisplayableDate(from: timestamps[index])
+                            entries.append(ChartEntry(price: roundedPoint, dateIndicator: timestamp))
                         }
                     }
                     completion(.success(entries))
@@ -119,4 +153,12 @@ struct Statement {
     
     static let defaultError = "We are experiencing some issues. Please, try again later."
     
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }
