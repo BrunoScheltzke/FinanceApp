@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupViewController" customModule="IzyWay" customModuleProvider="target">
+            <connections>
+                <outlet property="actionButton" destination="iX6-Kl-7dX" id="mGB-HQ-NwS"/>
+                <outlet property="formStackView" destination="aGi-pY-puq" id="ppz-bS-ufO"/>
+                <outlet property="popupBackgroundImage" destination="NhV-Ue-0st" id="GCi-67-6ok"/>
+                <outlet property="secondaryButton" destination="nwE-Y6-BSb" id="Wan-M8-WZM"/>
+                <outlet property="titleLabel" destination="oYd-bS-EgE" id="rDB-Vk-wlZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbq-V0-gG4">
+                    <rect key="frame" x="0.0" y="735.5" width="414" height="160.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NhV-Ue-0st">
+                    <rect key="frame" x="0.0" y="735.5" width="414" height="160.5"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="APq-ap-BnF">
+                    <rect key="frame" x="0.0" y="735.5" width="414" height="126.5"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-pY-puq">
+                            <rect key="frame" x="16" y="16" width="382" height="20.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oYd-bS-EgE" customClass="QuinteraryLabel" customModule="IzyWay" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UMP-mj-Sdp">
+                            <rect key="frame" x="16" y="60.5" width="382" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwE-Y6-BSb" customClass="SecondaryRoundButton" customModule="IzyWay" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                    <state key="normal" title="Deletar"/>
+                                    <connections>
+                                        <action selector="secondaryButtonClicked:" destination="-1" eventType="touchUpInside" id="fAD-3P-t2G"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX6-Kl-7dX" customClass="PrimaryRoundButton" customModule="IzyWay" customModuleProvider="target">
+                                    <rect key="frame" x="195" y="0.0" width="187" height="50"/>
+                                    <color key="backgroundColor" red="0.94541138410000003" green="0.48142308" blue="0.57270246739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Salvar"/>
+                                    <connections>
+                                        <action selector="actionButtonClicked:" destination="-1" eventType="touchUpInside" id="UYv-LD-A4m"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cbq-V0-gG4" firstAttribute="bottom" secondItem="NhV-Ue-0st" secondAttribute="bottom" id="3Yn-gI-Wqa"/>
+                <constraint firstItem="APq-ap-BnF" firstAttribute="top" secondItem="cbq-V0-gG4" secondAttribute="top" id="4WI-uC-xxO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="APq-ap-BnF" secondAttribute="trailing" id="DoB-ub-2gr"/>
+                <constraint firstItem="APq-ap-BnF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Jzk-fb-rIO"/>
+                <constraint firstItem="cbq-V0-gG4" firstAttribute="leading" secondItem="NhV-Ue-0st" secondAttribute="leading" id="KHt-Zc-3u0"/>
+                <constraint firstItem="APq-ap-BnF" firstAttribute="leading" secondItem="cbq-V0-gG4" secondAttribute="leading" id="PAz-t1-Uqx"/>
+                <constraint firstItem="cbq-V0-gG4" firstAttribute="top" secondItem="NhV-Ue-0st" secondAttribute="top" id="PKt-nO-dx2"/>
+                <constraint firstAttribute="bottom" secondItem="cbq-V0-gG4" secondAttribute="bottom" id="Ynu-Xv-D6k"/>
+                <constraint firstItem="APq-ap-BnF" firstAttribute="trailing" secondItem="cbq-V0-gG4" secondAttribute="trailing" id="fd6-Ip-JjU"/>
+                <constraint firstItem="cbq-V0-gG4" firstAttribute="trailing" secondItem="NhV-Ue-0st" secondAttribute="trailing" id="sCu-r8-WsD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="APq-ap-BnF" secondAttribute="bottom" id="zA2-ko-gCp"/>
+            </constraints>
+            <point key="canvasLocation" x="-228" y="26"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="iX6-Kl-7dX">
+            <size key="intrinsicContentSize" width="180" height="50"/>
+        </designable>
+        <designable name="nwE-Y6-BSb">
+            <size key="intrinsicContentSize" width="189" height="50"/>
+        </designable>
+        <designable name="oYd-bS-EgE">
+            <size key="intrinsicContentSize" width="43" height="20.5"/>
+        </designable>
+    </designables>
+</document>

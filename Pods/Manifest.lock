@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.4.0)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManagerSwift (6.5.6)
   - JMMaskTextField-Swift (0.1.3)
@@ -10,6 +13,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - AlamofireImage (~> 4.1)
+  - Charts
   - DZNEmptyDataSet
   - IQKeyboardManagerSwift
   - JMMaskTextField-Swift
@@ -19,6 +23,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - Charts
     - DZNEmptyDataSet
     - IQKeyboardManagerSwift
     - JMMaskTextField-Swift
@@ -27,11 +32,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   JMMaskTextField-Swift: 16aa552605b121285e6c2f0817ab31cea5f4704b
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
 
-PODFILE CHECKSUM: f710186591ba8cf7f7c02481b1f8f2b7367b1d83
+PODFILE CHECKSUM: 87188b30eeae3c50327a3ff383bc99447b059b71
 
 COCOAPODS: 1.8.4
