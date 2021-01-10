@@ -16,9 +16,44 @@ struct DefaultResponse: Codable {
     let msg: String
 }
 
-class YFinanceAPIProvider {
+protocol FinanceProvidable {
+    func getFinanceData(completion: @escaping(Result<[ChartEntry], Error>) -> Void)
+}
+
+class YFinanceAPIProvider: FinanceProvidable {
     
     lazy var loginPath = "\(basePath)cadastros/login"
+    
+    func getFinanceData(completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
+        let headers = [
+            "x-rapidapi-key": "955068e6ccmsh7b50ca4ee486385p1ab17djsn8ee566d54b9b",
+            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        ]
+        AF.request("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=HYDR.ME&interval=5m&range=1d",
+                   method: .get,
+                   headers: HTTPHeaders(headers))
+            .validate()
+            .responseJSON { self.handleResponse($0) { (result: Result<ChartWrapper, Error>) in
+                switch result {
+                case .success(let chart):
+                    guard let points = chart.chart.result.first?.indicators.quote.first?.close,
+                          let timestamps = chart.chart.result.first?.timestamp,
+                          timestamps.count == points.count else {
+                        completion(.failure(CustomError.invalidData))
+                        return
+                    }
+                    var entries = [ChartEntry]()
+                    for (index, point) in points.enumerated() {
+                        if let point = point {
+                            entries.append(ChartEntry(price: point, dateIndicator: timestamps[index]))
+                        }
+                    }
+                    completion(.success(entries))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }}
+    }
     
     func performGenericRequest<T: Decodable>(path: String, method: HTTPMethod, completion: @escaping(Result<T, Error>) -> Void) {
         AF.request(path)
@@ -42,34 +77,11 @@ class YFinanceAPIProvider {
                 completion(.failure(CustomError.invalidData))
                 return
             }
-            if let resultWapper = try? JSONDecoder().decode([DefaultResponse].self, from: data),
-                let defaultResponse = resultWapper.first,
-                defaultResponse.status == "02" {
-                completion(.failure(StringError(defaultResponse.msg)))
-                return
-            }
             do {
-                // todos os resultados vem dentro de uma array
-                let resultWapper = try JSONDecoder().decode([T].self, from: data)
-                if let result = resultWapper.first {
-                    completion(.success(result))
-                } else {
-                    completion(.failure(CustomError.invalidData))
-                }
+                let result = try JSONDecoder().decode(T.self, from: data)
+                completion(.success(result))
             } catch {
-                do {
-                    // caso o resultado esperado já seja uma array entao o back so retorna a array normal
-                    let result = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(result))
-                } catch {
-                    // ao inves de retornar uma array vazia quando nao tem nada, o back retorna uma array com uma model de vazio
-                    // entao dar sucesso na completion e retornar uma array vazia do model generico
-                    if let result = [] as? T {
-                        completion(.success(result))
-                    } else {
-                        completion(.failure(error))
-                    }
-                }
+                completion(.failure(error))
             }
         case .failure(let error):
             completion(.failure(error))

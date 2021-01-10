@@ -18,10 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         window.makeKeyAndVisible()
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
+        let vc = ChartViewController(viewModel: ChartViewModel(provider: YFinanceAPIProvider()))
         window.rootViewController = vc
-        
         return true
     }
 
