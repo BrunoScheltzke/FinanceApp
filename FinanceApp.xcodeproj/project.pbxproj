@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8449365425AB590800C324F5 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449365325AB590800C324F5 /* ChartViewModel.swift */; };
+		8449365A25AB85BE00C324F5 /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449365925AB85BE00C324F5 /* StockListViewModel.swift */; };
 		8463D6EC25AB1A470081944D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463D6EB25AB1A470081944D /* AppDelegate.swift */; };
 		8463D6F525AB1A4A0081944D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8463D6F425AB1A4A0081944D /* Assets.xcassets */; };
 		8463D6F825AB1A4A0081944D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8463D6F625AB1A4A0081944D /* LaunchScreen.storyboard */; };
@@ -49,6 +50,7 @@
 		0034D2A7E35347FA7CCB714A /* Pods-FinanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.release.xcconfig"; path = "Target Support Files/Pods-FinanceApp/Pods-FinanceApp.release.xcconfig"; sourceTree = "<group>"; };
 		2E09B18ABD68A0889CEB325F /* Pods-FinanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.debug.xcconfig"; path = "Target Support Files/Pods-FinanceApp/Pods-FinanceApp.debug.xcconfig"; sourceTree = "<group>"; };
 		8449365325AB590800C324F5 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		8449365925AB85BE00C324F5 /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
 		8463D6E825AB1A470081944D /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8463D6EB25AB1A470081944D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8463D6F425AB1A4A0081944D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +121,15 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		8449365725AB85A700C324F5 /* StockList */ = {
+			isa = PBXGroup;
+			children = (
+				8463D79725AB3F920081944D /* StockListViewController.swift */,
+				8449365925AB85BE00C324F5 /* StockListViewModel.swift */,
+			);
+			path = StockList;
+			sourceTree = "<group>";
+		};
 		8463D6DF25AB1A460081944D = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +160,7 @@
 				8463D6F925AB1A4A0081944D /* Info.plist */,
 				8463D7A025AB4EEA0081944D /* YFinance */,
 				8449365125AB58F700C324F5 /* Chart */,
-				8463D79725AB3F920081944D /* StockListViewController.swift */,
+				8449365725AB85A700C324F5 /* StockList */,
 			);
 			path = FinanceApp;
 			sourceTree = "<group>";
@@ -364,6 +375,7 @@
 				8463D77525AB3C6E0081944D /* UITableView.swift in Sources */,
 				8463D75C25AB3C390081944D /* MaskedTextFields.swift in Sources */,
 				8463D79025AB3D1D0081944D /* UIDevice.swift in Sources */,
+				8449365A25AB85BE00C324F5 /* StockListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PUPH2NBH;
 				INFOPLIST_FILE = FinanceApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M3PUPH2NBH;
 				INFOPLIST_FILE = FinanceApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

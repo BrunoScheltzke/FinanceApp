@@ -15,7 +15,7 @@ class SearchBar : UISearchBar {
     override func didMoveToSuperview() {
         tintColor = .mainBlue
         if #available(iOS 13.0, *) {
-            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([.foregroundColor : UIColor.black], for: .normal)
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
             let placeholderColor = UIColor.black.withAlphaComponent(0.75)
             let placeholderAttributes = [NSAttributedString.Key.foregroundColor : placeholderColor]
             let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: placeholderAttributes)
