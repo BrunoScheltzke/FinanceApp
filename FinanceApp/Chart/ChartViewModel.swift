@@ -9,7 +9,7 @@ import Foundation
 
 protocol ChartViewModelDelegate: class {
     func failed(message: String)
-    func didGet(_ items: [ChartEntry])
+    func didGet(_ item: ([ChartEntry], StockDetail))
 }
 
 struct ChartViewModel {
@@ -26,8 +26,8 @@ struct ChartViewModel {
     func getItens() {
         provider.getFinanceData(symbol: symbol.symbol, dateInterval: .oneMonth) { result in
             switch result {
-            case .success(let entries):
-                self.delegate?.didGet(entries)
+            case .success(let item):
+                self.delegate?.didGet(item)
             case .failure(let error):
                 self.delegate?.failed(message: error.localizedDescription)
             }

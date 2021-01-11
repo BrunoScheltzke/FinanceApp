@@ -10,6 +10,10 @@ import Charts
 
 class ChartViewController: BaseViewController {
 
+    @IBOutlet weak var volumeLabel: SecondaryLabel!
+    @IBOutlet weak var lowLabel: SecondaryLabel!
+    @IBOutlet weak var highLabel: SecondaryLabel!
+    @IBOutlet weak var openLabel: SecondaryLabel!
     @IBOutlet weak var chartView: LineChartView!
     
     var viewModel: ChartViewModel
@@ -30,18 +34,23 @@ class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupChart()
         navigationItem.title = viewModel.symbol.symbol
         viewModel.delegate = self
         view.lock()
         viewModel.getItens()
     }
     
-    private func setupEntries() {
+    private func setupChart() {
         chartView.xAxis.valueFormatter = DateAxisFormatter()
+        chartView.xAxis.labelCount = 6
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelWidth = 20
         chartView.xAxis.labelTextColor = .appWhite
         chartView.leftAxis.labelTextColor = .appWhite
+    }
+    
+    private func setupEntries() {
         let dataEntries: [ChartDataEntry] = entries.map { ChartDataEntry(x: $0.dateIndicator, y: $0.price) }
         let color: UIColor = .green
         let dataSet = LineChartDataSet(entries: dataEntries)
@@ -63,9 +72,13 @@ extension ChartViewController: ChartViewModelDelegate {
         present(message: message)
     }
     
-    func didGet(_ items: [ChartEntry]) {
+    func didGet(_ item: ([ChartEntry], StockDetail)) {
         view.unlock()
-        self.entries = items
+        self.entries = item.0
+        openLabel.text = item.1.open
+        lowLabel.text = item.1.low
+        highLabel.text = item.1.high
+        volumeLabel.text = item.1.volume
     }
     
 }

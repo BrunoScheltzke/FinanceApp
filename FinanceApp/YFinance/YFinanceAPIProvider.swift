@@ -37,7 +37,7 @@ enum DateInterval {
 }
 
 protocol FinanceProvidable {
-    func getFinanceData(symbol: String, dateInterval: DateInterval, completion: @escaping(Result<[ChartEntry], Error>) -> Void)
+    func getFinanceData(symbol: String, dateInterval: DateInterval, completion: @escaping(Result<([ChartEntry], StockDetail), Error>) -> Void)
     func searchSymbol(_ symbol: String, completion: @escaping(Result<[Symbol], Error>) -> Void)
 }
 
@@ -78,7 +78,7 @@ class YFinanceAPIProvider: FinanceProvidable {
     }
     
     func getFinanceData(symbol: String, dateInterval: DateInterval,
-                        completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
+                        completion: @escaping(Result<([ChartEntry], StockDetail), Error>) -> Void) {
         AF.request("\(historicalDataPath)\(symbol)&interval=5m&range=1d",
                    method: .get,
                    headers: HTTPHeaders(headers))
@@ -98,7 +98,14 @@ class YFinanceAPIProvider: FinanceProvidable {
                             entries.append(ChartEntry(price: point, dateIndicator: timestamps[index]))
                         }
                     }
-                    completion(.success(entries))
+                    
+                    let open = "\(((chart.chart.result.first?.indicators.quote.first?.open.first ?? 0) ?? 0).rounded(toPlaces: 4))"
+                    let high = "\(((chart.chart.result.first?.indicators.quote.first?.high.first ?? 0) ?? 0).rounded(toPlaces: 4))"
+                    let low = "\(((chart.chart.result.first?.indicators.quote.first?.low.first ?? 0) ?? 0).rounded(toPlaces: 4))"
+                    let volume = "\(((chart.chart.result.first?.indicators.quote.first?.volume.first ?? 0) ?? 0).rounded(toPlaces: 4))"
+                    let details = StockDetail(open: open, high: high, low: low, volume: volume)
+                    
+                    completion(.success((entries, details)))
                 case .failure(let error):
                     completion(.failure(error))
                 }

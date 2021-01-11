@@ -33,7 +33,7 @@ class PrimaryLabel: BaseLabel {
     
     override func setup() {
         super.setup()
-        textColor = .primaryTextColor
+        textColor = .secondaryTextColor
     }
     
 }
@@ -43,7 +43,7 @@ class SecondaryLabel: BaseLabel {
     
     override func setup() {
         super.setup()
-        textColor = .secondaryTextColor
+        textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
 }

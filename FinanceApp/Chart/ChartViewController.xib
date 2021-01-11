@@ -11,7 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartViewController" customModule="FinanceApp" customModuleProvider="target">
             <connections>
                 <outlet property="chartView" destination="8qq-Rv-Im4" id="gmU-is-f4d"/>
+                <outlet property="highLabel" destination="GDb-ga-VwD" id="msT-rT-OjG"/>
+                <outlet property="lowLabel" destination="DF5-hn-7EX" id="C08-oY-0xw"/>
+                <outlet property="openLabel" destination="Y0A-ga-9jT" id="Te5-iJ-9fC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="volumeLabel" destination="3S8-oe-TAw" id="rNd-cd-O3J"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,15 +30,119 @@
                         <constraint firstAttribute="height" constant="300" id="QmI-u4-BbK"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="khw-O9-Skz">
+                    <rect key="frame" x="16" y="360" width="382" height="100"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c3b-Ta-EgC">
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="100"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="YUx-XD-80C">
+                                    <rect key="frame" x="0.0" y="0.0" width="183" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pz-xe-plc" customClass="PrimaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0A-ga-9jT" customClass="SecondaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="133" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="fTd-jE-jB0">
+                                    <rect key="frame" x="0.0" y="50" width="183" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZA-0i-S5u" customClass="PrimaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDb-ga-VwD" customClass="SecondaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="133" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vxu-mb-QmR">
+                            <rect key="frame" x="199" y="0.0" width="183" height="100"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="qu0-Hm-Z64">
+                                    <rect key="frame" x="0.0" y="0.0" width="183" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frb-kg-EeB" customClass="PrimaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="31" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DF5-hn-7EX" customClass="SecondaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="133" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="4jq-HS-7jY">
+                                    <rect key="frame" x="0.0" y="50" width="183" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9U-QP-50W" customClass="PrimaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="57" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3S8-oe-TAw" customClass="SecondaryLabel" customModule="FinanceApp" customModuleProvider="target">
+                                            <rect key="frame" x="133" y="0.0" width="50" height="50"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8qq-Rv-Im4" secondAttribute="trailing" id="6pk-4X-HC5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="khw-O9-Skz" secondAttribute="trailing" constant="16" id="QUc-kg-cwa"/>
                 <constraint firstItem="8qq-Rv-Im4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ixT-7a-Bd0"/>
+                <constraint firstItem="khw-O9-Skz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="lpu-hP-iSj"/>
                 <constraint firstItem="8qq-Rv-Im4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mDs-aN-zuT"/>
+                <constraint firstItem="khw-O9-Skz" firstAttribute="top" secondItem="8qq-Rv-Im4" secondAttribute="bottom" constant="16" id="pct-kK-9gx"/>
             </constraints>
             <point key="canvasLocation" x="142" y="63"/>
         </view>
     </objects>
+    <designables>
+        <designable name="2Pz-xe-plc">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="3S8-oe-TAw"/>
+        <designable name="4ZA-0i-S5u">
+            <size key="intrinsicContentSize" width="35.5" height="20.5"/>
+        </designable>
+        <designable name="DF5-hn-7EX"/>
+        <designable name="GDb-ga-VwD"/>
+        <designable name="R9U-QP-50W">
+            <size key="intrinsicContentSize" width="57" height="20.5"/>
+        </designable>
+        <designable name="Y0A-ga-9jT"/>
+        <designable name="frb-kg-EeB">
+            <size key="intrinsicContentSize" width="31" height="20.5"/>
+        </designable>
+    </designables>
 </document>

@@ -11,3 +11,10 @@ struct Symbol {
     let symbol: String
     let longname: String
 }
+
+struct StockDetail {
+    let open: String
+    let high: String
+    let low: String
+    let volume: String
+}
