@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupNavBar() {
         UINavigationBar.appearance().backgroundColor = .appWhite
         UINavigationBar.appearance().barTintColor = .appWhite
-        UINavigationBar.appearance().tintColor = .mainBlue
+        UINavigationBar.appearance().tintColor = .appWhite
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.font: Font.navLargeTitleFont(),
                                                                  NSAttributedString.Key.foregroundColor: UIColor.appWhite]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: Font.navFont(),

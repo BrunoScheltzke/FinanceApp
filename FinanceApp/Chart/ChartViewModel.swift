@@ -16,13 +16,15 @@ struct ChartViewModel {
     
     weak var delegate: ChartViewModelDelegate?
     let provider: FinanceProvidable
+    let symbol: Symbol
     
-    init(provider: FinanceProvidable) {
+    init(symbol: Symbol, provider: FinanceProvidable) {
+        self.symbol = symbol
         self.provider = provider
     }
     
     func getItens() {
-        provider.getFinanceData(symbol: "HYDR.ME", dateInterval: .oneMonth) { result in
+        provider.getFinanceData(symbol: symbol.symbol, dateInterval: .oneMonth) { result in
             switch result {
             case .success(let entries):
                 self.delegate?.didGet(entries)

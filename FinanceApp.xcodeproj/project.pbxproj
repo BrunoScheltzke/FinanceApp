@@ -43,6 +43,8 @@
 		8463D79D25AB41820081944D /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463D79B25AB41820081944D /* ChartViewController.swift */; };
 		8463D79E25AB41820081944D /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8463D79C25AB41820081944D /* ChartViewController.xib */; };
 		8463D7A525AB527C0081944D /* YFinanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463D7A425AB527C0081944D /* YFinanceModel.swift */; };
+		8473BDD825AC797100A9730C /* ChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473BDD725AC797100A9730C /* ChartEntry.swift */; };
+		8473BDDB25AC798300A9730C /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473BDDA25AC798300A9730C /* Stock.swift */; };
 		E091AEA9B2A742E895868C12 /* Pods_FinanceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43986F6B3558A5A3A5D52CE /* Pods_FinanceApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		8463D79B25AB41820081944D /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		8463D79C25AB41820081944D /* ChartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewController.xib; sourceTree = "<group>"; };
 		8463D7A425AB527C0081944D /* YFinanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YFinanceModel.swift; sourceTree = "<group>"; };
+		8473BDD725AC797100A9730C /* ChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartEntry.swift; sourceTree = "<group>"; };
+		8473BDDA25AC798300A9730C /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		B43986F6B3558A5A3A5D52CE /* Pods_FinanceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,7 @@
 				8463D79B25AB41820081944D /* ChartViewController.swift */,
 				8463D79C25AB41820081944D /* ChartViewController.xib */,
 				8449365325AB590800C324F5 /* ChartViewModel.swift */,
+				8473BDD725AC797100A9730C /* ChartEntry.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			children = (
 				8463D79725AB3F920081944D /* StockListViewController.swift */,
 				8449365925AB85BE00C324F5 /* StockListViewModel.swift */,
+				8473BDDA25AC798300A9730C /* Stock.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				8463D79825AB3F920081944D /* StockListViewController.swift in Sources */,
 				8463D75725AB3C390081944D /* PrimaryTextField.swift in Sources */,
 				8463D77725AB3C6E0081944D /* UIView.swift in Sources */,
+				8473BDD825AC797100A9730C /* ChartEntry.swift in Sources */,
 				8463D77625AB3C6E0081944D /* UITextField.swift in Sources */,
 				8463D77225AB3C6E0081944D /* NotificationName.swift in Sources */,
 				8463D76E25AB3C6E0081944D /* UIButton.swift in Sources */,
@@ -361,6 +368,7 @@
 				8463D76F25AB3C6E0081944D /* Layer.swift in Sources */,
 				8463D77425AB3C6E0081944D /* UIStackView.swift in Sources */,
 				8463D7A525AB527C0081944D /* YFinanceModel.swift in Sources */,
+				8473BDDB25AC798300A9730C /* Stock.swift in Sources */,
 				8463D77125AB3C6E0081944D /* UIColor.swift in Sources */,
 				8463D70E25AB23C20081944D /* YFinanceAPIProvider.swift in Sources */,
 				8463D75625AB3C390081944D /* Toast.swift in Sources */,

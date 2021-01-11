@@ -8,11 +8,6 @@
 import UIKit
 import Charts
 
-struct ChartEntry {
-    let price: Double
-    let dateIndicator: Double
-}
-
 class ChartViewController: BaseViewController {
 
     @IBOutlet weak var chartView: LineChartView!
@@ -35,6 +30,7 @@ class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = viewModel.symbol.symbol
         viewModel.delegate = self
         view.lock()
         viewModel.getItens()

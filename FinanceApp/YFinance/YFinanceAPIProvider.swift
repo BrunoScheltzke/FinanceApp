@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-fileprivate let basePath = "https://app5m.com.br/iusui1872a5a78512rew/izyway/apiv2/app/"
+fileprivate let basePath = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/"
 
 struct DefaultResponse: Codable {
     let status: String
@@ -38,11 +38,20 @@ enum DateInterval {
 
 protocol FinanceProvidable {
     func getFinanceData(symbol: String, dateInterval: DateInterval, completion: @escaping(Result<[ChartEntry], Error>) -> Void)
+    func searchSymbol(_ symbol: String, completion: @escaping(Result<[Symbol], Error>) -> Void)
 }
 
 class YFinanceAPIProvider: FinanceProvidable {
     
-    lazy var loginPath = "\(basePath)cadastros/login"
+    lazy var historicalDataPath = "\(basePath)market/get-charts?symbol="
+    lazy var autocompletePath = "\(basePath)auto-complete?q="
+    
+    lazy var headers: [String: String] = {
+        return [
+            "x-rapidapi-key": "955068e6ccmsh7b50ca4ee486385p1ab17djsn8ee566d54b9b",
+            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        ]
+    }()
     
     func getDateParam(from dateInterval: DateInterval) -> String {
         switch dateInterval {
@@ -52,17 +61,25 @@ class YFinanceAPIProvider: FinanceProvidable {
         }
     }
     
-    func searchSymbol(_ symbol: String) {
-        
+    func searchSymbol(_ symbol: String,
+                      completion: @escaping(Result<[Symbol], Error>) -> Void) {
+        AF.request("\(autocompletePath)\(symbol)",
+                   method: .get,
+                   headers: HTTPHeaders(headers))
+            .validate()
+            .responseJSON { self.handleResponse($0) { (result: Result<AutoCompleteWrapper, Error>) in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let item):
+                    completion(.success(item.quotes.map { Symbol(symbol: $0.symbol, longname: $0.longname) }))
+                }
+            }}
     }
     
     func getFinanceData(symbol: String, dateInterval: DateInterval,
                         completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
-        let headers = [
-            "x-rapidapi-key": "955068e6ccmsh7b50ca4ee486385p1ab17djsn8ee566d54b9b",
-            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-        ]
-        AF.request("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol=\(symbol)&interval=5m&range=1d)",
+        AF.request("\(historicalDataPath)\(symbol)&interval=5m&range=1d",
                    method: .get,
                    headers: HTTPHeaders(headers))
             .validate()
@@ -75,15 +92,9 @@ class YFinanceAPIProvider: FinanceProvidable {
                         completion(.failure(CustomError.invalidData))
                         return
                     }
-//                    timestamps.forEach { timesta in
-//                        print(Date(timeIntervalSince1970: timesta))
-//                    }
                     var entries = [ChartEntry]()
                     for (index, point) in points.enumerated() {
                         if let point = point {
-//                            let roundedPoint = point.rounded(toPlaces: 3)
-//                            let timestamp = dateInterval.getDisplayableDate(from: timestamps[index])
-//                            entries.append(ChartEntry(price: roundedPoint, dateIndicator: timestamp))
                             entries.append(ChartEntry(price: point, dateIndicator: timestamps[index]))
                         }
                     }

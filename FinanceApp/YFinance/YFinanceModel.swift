@@ -37,3 +37,12 @@ struct Quote: Decodable {
     let high: [Double?]
     let open: [Double?]
 }
+
+struct AutoCompleteWrapper: Decodable {
+    let quotes: [SymbolYFinance]
+}
+
+struct SymbolYFinance: Decodable {
+    let symbol: String
+    let longname: String
+}

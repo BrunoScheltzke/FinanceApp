@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 class StockListViewController: BaseViewController {
     
     let tableView = UITableView()
-    var items = [String]()
+    var items = [Symbol]()
     var viewModel: StockListViewModel
     
     let searchController = SearchController()
@@ -19,6 +19,7 @@ class StockListViewController: BaseViewController {
     init(viewModel: StockListViewModel) {
         self.viewModel = viewModel
         super.init()
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -50,13 +51,28 @@ class StockListViewController: BaseViewController {
     
 }
 
+extension StockListViewController: StockListViewModelDelegate {
+    
+    func failed(message: String) {
+        view.unlock()
+        present(message: message)
+    }
+    
+    func didGet(_ items: [Symbol]) {
+        view.unlock()
+        self.items = items
+        tableView.reloadData()
+    }
+    
+}
+
 extension StockListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        let vm = ChartViewModel(provider: viewModel.provider)
-        let vc = ChartViewController(viewModel: vm)
-        navigationController?.pushViewController(vc, animated: true)
+        view.lock()
+        viewModel.searchSymbol(text)
+        searchController.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -67,6 +83,8 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource, D
         let cell: UITableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.selectionStyle = .none
         let item = items[indexPath.row]
+        cell.textLabel?.text = item.symbol
+        cell.detailTextLabel?.text = item.longname
         return cell
     }
     
@@ -76,6 +94,9 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource, D
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = items[indexPath.row]
+        let viewModel = ChartViewModel(symbol: item, provider: self.viewModel.provider)
+        let viewController = ChartViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
