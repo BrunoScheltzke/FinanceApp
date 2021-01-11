@@ -43,6 +43,9 @@ class ChartViewController: BaseViewController {
     private func setupEntries() {
         chartView.xAxis.valueFormatter = DateAxisFormatter()
         chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelWidth = 20
+        chartView.xAxis.labelTextColor = .appWhite
+        chartView.leftAxis.labelTextColor = .appWhite
         let dataEntries: [ChartDataEntry] = entries.map { ChartDataEntry(x: $0.dateIndicator, y: $0.price) }
         let color: UIColor = .green
         let dataSet = LineChartDataSet(entries: dataEntries)
@@ -76,7 +79,7 @@ class DateAxisFormatter: IAxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let date = Date(timeIntervalSince1970: value)
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd hh:mm"
+        formatter.dateFormat = "MM-dd-YY\nhh:mm"
         return formatter.string(from: date)
     }
     
