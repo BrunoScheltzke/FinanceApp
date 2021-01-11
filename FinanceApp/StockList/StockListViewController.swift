@@ -54,7 +54,9 @@ extension StockListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        
+        let vm = ChartViewModel(provider: viewModel.provider)
+        let vc = ChartViewController(viewModel: vm)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

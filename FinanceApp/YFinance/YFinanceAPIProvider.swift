@@ -52,6 +52,10 @@ class YFinanceAPIProvider: FinanceProvidable {
         }
     }
     
+    func searchSymbol(_ symbol: String) {
+        
+    }
+    
     func getFinanceData(symbol: String, dateInterval: DateInterval,
                         completion: @escaping(Result<[ChartEntry], Error>) -> Void) {
         let headers = [
@@ -71,15 +75,16 @@ class YFinanceAPIProvider: FinanceProvidable {
                         completion(.failure(CustomError.invalidData))
                         return
                     }
-                    timestamps.forEach { timesta in
-                        print(Date(timeIntervalSince1970: timesta))
-                    }
+//                    timestamps.forEach { timesta in
+//                        print(Date(timeIntervalSince1970: timesta))
+//                    }
                     var entries = [ChartEntry]()
                     for (index, point) in points.enumerated() {
                         if let point = point {
-                            let roundedPoint = point.rounded(toPlaces: 3)
-                            let timestamp = dateInterval.getDisplayableDate(from: timestamps[index])
-                            entries.append(ChartEntry(price: roundedPoint, dateIndicator: timestamp))
+//                            let roundedPoint = point.rounded(toPlaces: 3)
+//                            let timestamp = dateInterval.getDisplayableDate(from: timestamps[index])
+//                            entries.append(ChartEntry(price: roundedPoint, dateIndicator: timestamp))
+                            entries.append(ChartEntry(price: point, dateIndicator: timestamps[index]))
                         }
                     }
                     completion(.success(entries))
