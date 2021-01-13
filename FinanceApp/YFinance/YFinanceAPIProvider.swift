@@ -106,6 +106,10 @@ class YFinanceAPIProvider: FinanceProvidable {
             }}
     }
     
+    func getRiskReturn(stock: String, startDate: Date, endDate: Date, completion: @escaping(Result<String, Error>) -> Void) {
+        completion(.failure(CustomError.invalidData))
+    }
+    
     func performGenericRequest<T: Decodable>(path: String, method: HTTPMethod, completion: @escaping(Result<T, Error>) -> Void) {
         AF.request(path)
         .validate()

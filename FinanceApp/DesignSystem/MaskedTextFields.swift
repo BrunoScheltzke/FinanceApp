@@ -174,8 +174,8 @@ class DateTextField: PrimaryTextField {
     
     override func commonInit() {
         super.commonInit()
-        placeholder = "Selecione uma data"
-        title = "Data"
+        placeholder = "Select a date"
+        title = "Date"
         
         dateFormatter.dateFormat = dateFormat
         datePickerView.datePickerMode = .date

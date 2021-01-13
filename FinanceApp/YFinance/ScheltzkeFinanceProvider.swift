@@ -44,4 +44,8 @@ class ScheltzkeFinanceProvider: FinanceProvidable {
         }
     }
     
+    func getRiskReturn(stock: String, startDate: Date, endDate: Date, completion: @escaping(Result<String, Error>) -> Void) {
+        completion(.success("Geez, that is way too risky. Don't do it!"))
+    }
+    
 }

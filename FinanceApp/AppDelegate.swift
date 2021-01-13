@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         window.makeKeyAndVisible()
-        let vc = StockListViewController(viewModel: StockListViewModel(provider: YFinanceAPIProvider()))
+        let vc = StockListViewController(viewModel: StockListViewModel(provider: ScheltzkeFinanceProvider()))
         let nav = BaseNavigationController(rootViewController: vc)
         window.rootViewController = nav
         return true

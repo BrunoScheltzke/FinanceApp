@@ -10,6 +10,8 @@ import Charts
 
 class ChartViewController: BaseViewController {
 
+    @IBOutlet weak var endDateTF: DateTextField!
+    @IBOutlet weak var startDateTF: DateTextField!
     @IBOutlet weak var volumeLabel: SecondaryLabel!
     @IBOutlet weak var lowLabel: SecondaryLabel!
     @IBOutlet weak var highLabel: SecondaryLabel!
@@ -43,7 +45,7 @@ class ChartViewController: BaseViewController {
     
     private func setupChart() {
         chartView.xAxis.valueFormatter = DateAxisFormatter()
-        chartView.xAxis.labelCount = 6
+//        chartView.xAxis.labelCount = 6
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelWidth = 20
         chartView.xAxis.labelTextColor = .appWhite
@@ -63,6 +65,15 @@ class ChartViewController: BaseViewController {
         chartView.fitScreen()
     }
 
+    @IBAction func getRiskReturn(_ sender: Any) {
+        guard let startDate = startDateTF.date, let endDate = endDateTF.date else {
+            present(message: "Please, select the end and start date")
+            return
+        }
+        view.lock()
+        viewModel.getRiskReturn(startDate: startDate, endDate: endDate)
+    }
+    
 }
 
 extension ChartViewController: ChartViewModelDelegate {
@@ -79,6 +90,11 @@ extension ChartViewController: ChartViewModelDelegate {
         lowLabel.text = item.1.low
         highLabel.text = item.1.high
         volumeLabel.text = item.1.volume
+    }
+    
+    func didGet(riskReturn: String) {
+        view.unlock()
+        present(message: riskReturn)
     }
     
 }
