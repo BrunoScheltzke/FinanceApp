@@ -25,7 +25,6 @@ enum DateInterval {
     func getDisplayableDate(from timeInterval: TimeInterval) -> Double {
         let date = Date(timeIntervalSince1970: timeInterval)
         let calendar = Calendar.current
-        return Double(calendar.component(.hour, from: date)).rounded(toPlaces: 2)
         
         switch self {
         case .oneDay: return Double(calendar.component(.hour, from: date)).rounded(toPlaces: 2)
@@ -34,11 +33,6 @@ enum DateInterval {
         }
     }
     
-}
-
-protocol FinanceProvidable {
-    func getFinanceData(symbol: String, dateInterval: DateInterval, completion: @escaping(Result<([ChartEntry], StockDetail), Error>) -> Void)
-    func searchSymbol(_ symbol: String, completion: @escaping(Result<[Symbol], Error>) -> Void)
 }
 
 class YFinanceAPIProvider: FinanceProvidable {

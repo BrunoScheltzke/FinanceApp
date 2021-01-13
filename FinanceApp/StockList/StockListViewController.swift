@@ -83,8 +83,7 @@ extension StockListViewController: UITableViewDelegate, UITableViewDataSource, D
         let cell: UITableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.selectionStyle = .none
         let item = items[indexPath.row]
-        cell.textLabel?.text = item.symbol
-        cell.detailTextLabel?.text = item.longname
+        cell.textLabel?.text = "\(item.symbol), \(item.longname)"
         return cell
     }
     

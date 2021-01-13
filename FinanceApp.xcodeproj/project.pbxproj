@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8409C2C825AF2A4400983964 /* ScheltzkeFinanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409C2C725AF2A4400983964 /* ScheltzkeFinanceProvider.swift */; };
 		8449365425AB590800C324F5 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449365325AB590800C324F5 /* ChartViewModel.swift */; };
 		8449365A25AB85BE00C324F5 /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449365925AB85BE00C324F5 /* StockListViewModel.swift */; };
 		8463D6EC25AB1A470081944D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463D6EB25AB1A470081944D /* AppDelegate.swift */; };
@@ -45,12 +46,14 @@
 		8463D7A525AB527C0081944D /* YFinanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8463D7A425AB527C0081944D /* YFinanceModel.swift */; };
 		8473BDD825AC797100A9730C /* ChartEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473BDD725AC797100A9730C /* ChartEntry.swift */; };
 		8473BDDB25AC798300A9730C /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473BDDA25AC798300A9730C /* Stock.swift */; };
+		84AE64CB25AF26B9008D7FE2 /* FinanceAPIProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE64CA25AF26B9008D7FE2 /* FinanceAPIProvidable.swift */; };
 		E091AEA9B2A742E895868C12 /* Pods_FinanceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43986F6B3558A5A3A5D52CE /* Pods_FinanceApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0034D2A7E35347FA7CCB714A /* Pods-FinanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.release.xcconfig"; path = "Target Support Files/Pods-FinanceApp/Pods-FinanceApp.release.xcconfig"; sourceTree = "<group>"; };
 		2E09B18ABD68A0889CEB325F /* Pods-FinanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.debug.xcconfig"; path = "Target Support Files/Pods-FinanceApp/Pods-FinanceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8409C2C725AF2A4400983964 /* ScheltzkeFinanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheltzkeFinanceProvider.swift; sourceTree = "<group>"; };
 		8449365325AB590800C324F5 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		8449365925AB85BE00C324F5 /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
 		8463D6E825AB1A470081944D /* FinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +94,7 @@
 		8463D7A425AB527C0081944D /* YFinanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YFinanceModel.swift; sourceTree = "<group>"; };
 		8473BDD725AC797100A9730C /* ChartEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartEntry.swift; sourceTree = "<group>"; };
 		8473BDDA25AC798300A9730C /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		84AE64CA25AF26B9008D7FE2 /* FinanceAPIProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceAPIProvidable.swift; sourceTree = "<group>"; };
 		B43986F6B3558A5A3A5D52CE /* Pods_FinanceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,6 +227,8 @@
 			children = (
 				8463D70D25AB23C20081944D /* YFinanceAPIProvider.swift */,
 				8463D7A425AB527C0081944D /* YFinanceModel.swift */,
+				84AE64CA25AF26B9008D7FE2 /* FinanceAPIProvidable.swift */,
+				8409C2C725AF2A4400983964 /* ScheltzkeFinanceProvider.swift */,
 			);
 			path = YFinance;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				8463D79D25AB41820081944D /* ChartViewController.swift in Sources */,
 				8463D79825AB3F920081944D /* StockListViewController.swift in Sources */,
 				8463D75725AB3C390081944D /* PrimaryTextField.swift in Sources */,
+				84AE64CB25AF26B9008D7FE2 /* FinanceAPIProvidable.swift in Sources */,
 				8463D77725AB3C6E0081944D /* UIView.swift in Sources */,
 				8473BDD825AC797100A9730C /* ChartEntry.swift in Sources */,
 				8463D77625AB3C6E0081944D /* UITextField.swift in Sources */,
@@ -366,6 +373,7 @@
 				8449365425AB590800C324F5 /* ChartViewModel.swift in Sources */,
 				8463D78F25AB3D1D0081944D /* ShadowView.swift in Sources */,
 				8463D76F25AB3C6E0081944D /* Layer.swift in Sources */,
+				8409C2C825AF2A4400983964 /* ScheltzkeFinanceProvider.swift in Sources */,
 				8463D77425AB3C6E0081944D /* UIStackView.swift in Sources */,
 				8463D7A525AB527C0081944D /* YFinanceModel.swift in Sources */,
 				8473BDDB25AC798300A9730C /* Stock.swift in Sources */,
